@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1" />
+		<title>Introduction to Java — Slides</title>
+
+		<!-- Reveal.js styles (CDN) -->
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.css"
+		/>
+		<link
+			rel="stylesheet"
+			href="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/theme/solarized.css"
+			id="theme"
+		/>
+
+		<!-- Highlight.js styles (CDN) -->
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
+		/>
+
+		<style>
+			/* small fixed signature */
+			#signature {
+				position: fixed;
+				right: 12px;
+				bottom: 8px;
+				font-size: 12px;
+				opacity: 0.85;
+				background: rgba(255, 255, 255, 0.02);
+				padding: 4px 8px;
+				border-radius: 4px;
+				pointer-events: none;
+			}
+			/* keep code blocks readable on slides */
+			pre code {
+				font-size: 12px;
+				line-height: 1.25;
+				max-height: 360px;
+				overflow: auto;
+				display: block;
+			}
+			.slide-links a {
+				color: #ffd700;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<p class="small">by @iMythms — Mytham Jasim</p>
+
+					<h1>Introduction to Java</h1>
+					<aside class="notes">
+						Slides authored by @iMythms — contact: hello@mytham.me
+					</aside>
+				</section>
+
+				<!-- 01_basics -->
+				<section>
+					<h2>01_basics</h2>
+					<p>
+						This lesson covers Java basics: primitive variables, char, simple
+						input/output, and very small programs meant for beginners.
+					</p>
+
+					<h3>Representative snippet (Age.java)</h3>
+					<pre><code class="language-java">import java.util.Scanner;
+
+public class Age {
+    public static void main(String[] args) {
+        try (Scanner input = new Scanner(System.in)) {
+            int thisYear = 2022;
+            System.out.println("Enter your birth year: ");
+            int birthYear = input.nextInt();
+
+            int age = thisYear - birthYear;
+
+            if (age < 0)
+                System.out.println("Invalid input");
+            else
+                System.out.println("Your age should be: " + age);
+        }
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac ../01_basics/Age.java && java -cp
+						../01_basics Age
+					</p>
+				</section>
+
+				<!-- 02_control_statements -->
+				<section>
+					<h2>02_control_statements</h2>
+					<p>
+						This lesson focuses on control flow: if/else, switch, and
+						conditional logic.
+					</p>
+
+					<h3>Representative snippet (controlStatement1.java)</h3>
+					<pre><code class="language-java">import java.util.Scanner;
+
+public class controlStatement1 {
+
+    public static void main(String[] args) {
+
+        try (Scanner input = new Scanner(System.in)) {
+            System.out.println("Enter your weight: ");
+            int weight;
+            weight = input.nextInt();
+
+            if (weight < 0)
+                System.out.println("Error, Invalid input");
+
+            else if (weight > 100)
+                System.out.println("Obese");
+
+            else if (weight < 30)
+                System.out.println("Underweight");
+
+            else
+                System.out.println("Normal");
+        }
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac
+						../02_control_statements/controlStatement1.java && java -cp
+						../02_control_statements controlStatement1
+					</p>
+				</section>
+
+				<!-- 03_loops -->
+				<section>
+					<h2>03_loops</h2>
+					<p>
+						This lesson introduces loop constructs: for, while, and do-while,
+						with progressive examples.
+					</p>
+
+					<h3>Representative snippet (IntroductionToLoops.java)</h3>
+					<pre><code class="language-java">public class IntroductionToLoops {
+    public static void main(String[] args) {
+
+        int i = 20;
+
+        while (i >= 10) {
+            System.out.println(i);
+            i = i - 2;
+        }
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac
+						../03_loops/IntroductionToLoops.java && java -cp ../03_loops
+						IntroductionToLoops
+					</p>
+				</section>
+
+				<!-- 04_nested_loops -->
+				<section>
+					<h2>04_nested_loops</h2>
+					<p>
+						This lesson covers nested loop patterns and exercises that commonly
+						appear in programming assignments.
+					</p>
+
+					<h3>Representative snippet (NestedLoops.java)</h3>
+					<pre><code class="language-java">import java.util.Scanner;
+
+public class NestedLoops {
+    public static void main(String[] args) {
+        try (Scanner input = new Scanner(System.in)) {
+            String name;
+            double grade;
+            double sum = 0;
+            double average;
+
+            for (int out = 1; out <= 3; out++) {
+                System.out.println("Enter Name: ");
+                name = input.next();
+                sum = 0;
+
+                for (int in = 1; in <= 4; in++) {
+                    System.out.print("Enter Grade: ");
+                    grade = input.nextDouble();
+                    sum += grade;
+                }
+                average = sum / 4;
+                System.out.println("Average= " + average);
+                if (average >= 60)
+                    System.out.println("Pass");
+                else
+                    System.out.println("Fail");
+            }
+        }
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac
+						../04_nested_loops/NestedLoops.java && java -cp ../04_nested_loops
+						NestedLoops
+					</p>
+				</section>
+
+				<!-- 05_arrays -->
+				<section>
+					<h2>05_arrays</h2>
+					<p>
+						This lesson demonstrates arrays: one-dimensional arrays, basic
+						operations, and two-dimensional arrays.
+					</p>
+
+					<h3>Representative snippet (Arrays2DEx0.java)</h3>
+					<pre><code class="language-java">public class Arrays2DEx0 {
+    public static void main(String[] args) {
+        int arr[][] = { { 2, 4 }, { 6, 8 } };
+
+        int sum = 0, min = arr[0][0], max = arr[0][0];
+
+        for (int r = 0; r < 2; r++) {
+            for (int c = 0; c < 2; c++) {
+                System.out.print(arr[r][c] + " ");
+                sum += arr[r][c];
+                min = Math.min(min, arr[r][c]);
+                max = Math.min(min, arr[r][c]);
+            }
+            System.out.println();
+        }
+        System.out.println("Sum = " + sum);
+        System.out.println("Min = " + min);
+        System.out.println("Max = " + max);
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac ../05_arrays/Arrays2DEx0.java &&
+						java -cp ../05_arrays Arrays2DEx0
+					</p>
+				</section>
+
+				<!-- 06_file_io -->
+				<section>
+					<h2>06_file_io</h2>
+					<p>
+						This lesson contains examples for reading and writing files and
+						working with simple file-based input.
+					</p>
+
+					<h3>Representative snippet (FinalExamQ12.java)</h3>
+					<pre><code class="language-java">public class FinalExamQ12 {
+    public static void main(String[] args) {
+        int arr[][] = { { 3, 8, 2 }, { 1, 0, 2 }, { 7, 2, 6 } };
+
+        int sum = 0;
+        for (int out = 0; out < 3; out++) {
+            for (int in = 0; in < 3; in++) {
+                System.out.print(arr[out][in] + "\t");
+                sum = (arr[0][1] + arr[1][0] + arr[1][1] + arr[1][2] + arr[2][1]);
+            }
+            System.out.println();
+        }
+        System.out.println("Sum= " + sum);
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac ../06_file_io/FinalExamQ12.java
+						&& java -cp ../06_file_io FinalExamQ12
+					</p>
+				</section>
+
+				<!-- 07_methods_and_printing -->
+				<section>
+					<h2>07_methods_and_printing</h2>
+					<p>
+						This lesson covers small functions/method examples and formatted
+						output using PrintF-style functionality.
+					</p>
+
+					<h3>Representative snippet (MathFunction.java)</h3>
+					<pre><code class="language-java">public class MathFunction 
+{
+    public static void main(String[] args) 
+    {
+        double a = 6.8;
+        double b = 2.3;
+
+        //Ready function for PI = 3.14
+        System.out.println(Math.PI);
+
+        //Ready function for rounding numbers
+        System.out.println(Math.round(a));
+        System.out.println(Math.round(b));
+
+        //Ready Ceiling & Flooring function
+        System.out.println(Math.ceil(a));
+        System.out.println(Math.floor(a));
+
+        System.out.println(Math.ceil(b));
+        System.out.println(Math.floor(b));
+
+        //Ready Square root function
+        System.out.println(Math.sqrt(9));
+
+        //Power (base value, power value)
+        System.out.println(Math.pow(3, 2)); //3^2
+
+        //Max function (will print the highest value)
+        System.out.println(Math.max(a, b));
+
+        //Min function (will print the minimum value)
+        System.out.println(Math.min(8, Math.min(3, 6)));
+    }    
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac
+						../07_methods_and_printing/MathFunction.java && java -cp
+						../07_methods_and_printing MathFunction
+					</p>
+				</section>
+
+				<!-- 08_oop_and_shapes -->
+				<section>
+					<h2>08_oop_and_shapes</h2>
+					<p>
+						This lesson demonstrates very small object-oriented examples related
+						to shapes (circle, rectangle) to practice classes and simple
+						methods.
+					</p>
+
+					<h3>Representative snippet (MyCircle.java)</h3>
+					<pre><code class="language-java">import java.util.Scanner;
+
+public class MyCircle {
+    public static void main(String[] args) {
+        try (Scanner input = new Scanner(System.in)) {
+            double radius;
+
+            System.out.println("Enter radius: ");
+            radius = input.nextDouble();
+
+            double area = (3.14) * (radius) * (radius);
+            System.out.println("Area = PI * r^2 = " + area);
+
+            double perimeter = (2) * (3.14) * (radius);
+            System.out.println("Perimeter = 2 * PI * r = " + perimeter);
+        }
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac
+						../08_oop_and_shapes/MyCircle.java && java -cp ../08_oop_and_shapes
+						MyCircle
+					</p>
+				</section>
+
+				<!-- 09_calculators_and_utils -->
+				<section>
+					<h2>09_calculators_and_utils</h2>
+					<p>
+						This lesson contains utility and calculator-style programs that
+						combine input, arithmetic, and small menus.
+					</p>
+
+					<h3>Representative snippet (CurrencyConverter.java)</h3>
+					<pre><code class="language-java">import java.util.Scanner;
+
+public class CurrencyConverter {
+    public static void main(String[] args) {
+        try (Scanner input = new Scanner(System.in)) {
+            double amount;
+            double euro;
+            boolean Exit = false;
+            final int Sentinel = -99;
+
+            System.out.println("BHD to EUR Converter");
+
+            do {
+                System.out.println("Please enter amount (-99 to quit)");
+                amount = input.nextDouble();
+
+                if (amount != Sentinel) {
+                    euro = amount * 1.85;
+                    System.out.println(amount + "BHD is equal to " + euro + "EUR");
+                } else {
+                    Exit = true;
+                }
+            } while (Exit);
+        }
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac
+						../09_calculators_and_utils/CurrencyConverter.java && java -cp
+						../09_calculators_and_utils CurrencyConverter
+					</p>
+				</section>
+
+				<!-- 10_projects_and_tests -->
+				<section>
+					<h2>10_projects_and_tests</h2>
+					<p>
+						This folder gathers lab projects, test examples, and larger
+						multi-step tasks used for assessment or practice.
+					</p>
+
+					<h3>Representative snippet (LabProject1.java)</h3>
+					<pre><code class="language-java">public class LabProject1 {
+    public static void main(String[] args) {
+
+        double radius = 2.0;
+
+        double height = 5.0;
+
+        // Surface Area equation = A = PI*R(R+sqrt(h^2+R^2))
+        double surfaceArea = Math.PI * radius * (radius + Math.sqrt(Math.pow(height, 2) + Math.pow(radius, 2)));
+
+        // Volume equation = PI * R^2 (h/3)
+        double volume = Math.PI * Math.pow(radius, 2) * (height / 3);
+
+        // Printing Statement
+        System.out.println("Surface Area of the Cone = " + Math.round(surfaceArea));
+
+        System.out.println("Volume of the Cone = " + Math.round(volume));
+    }
+}
+</code></pre>
+
+					<p>
+						<strong>How to run</strong>: javac
+						../10_projects_and_tests/LabProject1.java && java -cp
+						../10_projects_and_tests LabProject1
+					</p>
+				</section>
+
+				<!-- 11_misc -->
+				<section>
+					<h2>11_misc</h2>
+					<p>Miscellaneous resources and sample data used by examples.</p>
+
+					<p><em>No Java source files in this folder.</em></p>
+				</section>
+			</div>
+		</div>
+
+		<div id="signature">— Mytham Jasim</div>
+
+		<!-- Reveal.js and Highlight.js (CDN) -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js@4/dist/reveal.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+
+		<script>
+			// Initialize Reveal
+			Reveal.initialize({
+				hash: true,
+				slideNumber: true,
+				center: true,
+				width: '100%',
+				height: '100%',
+				keyboard: true,
+			});
+
+			// Run highlight.js after Reveal is ready
+			Reveal.on('ready', function () {
+				if (window.hljs) {
+					hljs.highlightAll();
+				}
+			});
+
+			// Also ensure highlighting runs on DOMContentLoaded for static previews
+			document.addEventListener('DOMContentLoaded', function () {
+				if (window.hljs) {
+					hljs.highlightAll();
+				}
+			});
+		</script>
+	</body>
+</html>
